@@ -1,0 +1,5 @@
+ikbal_blog:
+    resource: "@IkbalBlogBundle/Resources/config/routing.yml"
+    prefix:   /
+
+

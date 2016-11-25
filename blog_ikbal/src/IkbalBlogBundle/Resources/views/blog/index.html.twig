@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+	{% block title %}Blog ikbal
+		{% endblock %}
+		{% block body %}
+		<div class="content">
+		<div class="article">
+		<h5 class="head"> Les Articles</h5>
+		{%  for article in articles%}
+		
+
+  <div class="row">
+    <div class="col-sm-6">
+    <img alt="Angular2" src="{{asset('assets/images/angular2.png') }}"  alt=""  width="200"  height="100" />
+    </div>
+    <div class="col-sm-6" >
+     <ul>	
+     	 <a  href="{{ path( 'showArticle', {id : article.getId()}) }}">{{article.getTitle()}} </a>
+		<h1 class="article-titre"><li> {{article.getTitle()}}</li></h1>
+		<li>{{article.getAuthor()}}</li>
+		<li>{{article.getId()}}</li>
+		<li>{{article.getContent()}}</li>
+		</ul>
+    </div>
+  </div>
+	 <hr class="article-separation"/>
+		
+	
+
+		{% endfor %}
+		</div>
+		{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(articles) }}
+</div>
+
+	{% endblock %}

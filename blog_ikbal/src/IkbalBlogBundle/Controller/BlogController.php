@@ -82,11 +82,11 @@ class BlogController extends Controller
    }
    /**
    *
-     * @Route("/{id}", name="showArticle")
+     * @Route("/showarticle/{id}", name="showArticle")
      */
-     public function showAction($id,Request $request)
+     public function showAction($id)
         {
-       $id=$request->query->get('id');
+   
 
               $article = $this->getDoctrine()->getRepository('IkbalBlogBundle:Articles')->find($id);
       if(!$article) {

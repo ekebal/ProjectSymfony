@@ -52,7 +52,7 @@ class Articles
     /**
      * @var \stdClass
      *
-     * @ORM\Column(name="picture", type="object")
+     * @ORM\Column(name="picture", type="text")
      */
     private $picture;
 

@@ -17,42 +17,39 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 class BlogController extends Controller
 {
     
-
      /**
-     
      *
      * @Route("/", name="index")
-     */
-
+    */
     public function getAction(Request $request)
-    {
-    	// on recupére un objet  doctrine , on indique ou se situe l'entité  concercé 
-        // 
-        //$request = $this->getRequest();
+        {
+            // on recupére un objet  doctrine , on indique ou se situe l'entité  concercé 
+            // 
+            //$request = $this->getRequest();
             $listarticles = $this->getDoctrine()
-                ->getRepository('IkbalBlogBundle:Articles') ->findAll();
+            ->getRepository('IkbalBlogBundle:Articles') ->findAll();
 
 
-        $articles  = $this->get('knp_paginator')->paginate(
-        $listarticles, /* query NOT result */
-        $request->query->get('page', 1)
-        /*page number*/,
-        6/*limit per page*/);
+            $articles  = $this->get('knp_paginator')->paginate(
+            $listarticles, /* query NOT result */
+            $request->query->get('page', 1)
+            /*page number*/,
+            6/*limit per page*/);
 
-              //  findAllPagineEtTrie($page, 5);
-             /*   $pagination = array(
-                'page' => $page,
-                'nbPages' => ceil(count($articles) / 5),
-                'nomRoute' => 'index',
-                'paramsRoute' => array()
-                );*/
-            
+            //  findAllPagineEtTrie($page, 5);
+            /*   $pagination = array(
+            'page' => $page,
+            'nbPages' => ceil(count($articles) / 5),
+            'nomRoute' => 'index',
+            'paramsRoute' => array()
+            );*/
+
             return $this->render('IkbalBlogBundle:blog:index.html.twig',array(
-                'articles' => $articles
-                //'pagination'=>$pagination
+            'articles' => $articles
+            //'pagination'=>$pagination
             ));         
-                  
-    }
+          
+            }
 
        /**
      
@@ -88,10 +85,10 @@ class BlogController extends Controller
         {
    
 
-              $article = $this->getDoctrine()->getRepository('IkbalBlogBundle:Articles')->find($id);
-      if(!$article) {
+            $article = $this->getDoctrine()->getRepository('IkbalBlogBundle:Articles')->find($id);
+            if(!$article) {
             // il n'y a pas d'article correspondant => erreur 404 ou redirection ou ce que tu veux ... 
-      }
-      return $this->render('IkbalBlogBundle:blog:showArticle.html.twig', array('article' => $article));
-        }
+            }
+            return $this->render('IkbalBlogBundle:blog:showArticle.html.twig', array('article' => $article));
+            }
 }

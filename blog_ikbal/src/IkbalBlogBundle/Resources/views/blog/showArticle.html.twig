@@ -2,10 +2,43 @@
 	{% block title %}Blog ikbal
 	{% endblock %}
 	{% block body %}
-			<div>
-			
+		<div >
 
+	<div class="row">
+		<div class="col-sm-3 " style="height: 200px;line-height:200px; text-align:center;">
+			<img class="vcenter" alt="#" src="{{article.getPicture()}}"  alt=""  width="200" />
+		</div>
+
+		<div class="col-sm-7" >
+			<div class="row showarticle ">
+				<div class="col-sm-11">
+					<a href="{{ path( 'showArticle', {id : article.getId()}) }}">
+						<h2 class="article-titre">{{article.getTitle()}}</h2>
+					</a>
+				</div>
 			</div>
+			<div class="row article-date">
+				<div class="col-sm-6 text-left">{{article.getdate()  | date('Y-m-d H:i')}} </div>
+				<div class="col-sm-5 text-right">{{article.getAuthor()}}</div>
+			</div>
+			<div class="row article-text "> 
+				<div class="col-sm-11">
+					{{ article.getContent() | striptags }}
+				</div>
+			</div>
+			<div class="row" >
+				<div class="col-sm-11 text-right">
+					{% if is_granted('ROLE_ADMIN') %}
+					<a href="{{ path( 'deleteaction', {id : article.getId()}) }}" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-trash"></span> Supprimer</a>
+					<a href="{{ path( 'EditAction', {id : article.getId()}) }}" class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-ok"></span> Editer</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		
+
+	</div>
+</div>
 
 
 	{% endblock %}

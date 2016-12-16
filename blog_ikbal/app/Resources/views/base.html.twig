@@ -4,27 +4,45 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
-        {% stylesheets '@IkbalBlogBundle/Resources/public/css/*' %}
+        {% stylesheets '@IkbalBlogBundle/Resources/public/css/bootstrap.css'
+         '@IkbalBlogBundle/Resources/public/css/blog-ikbal-css.css' %}
+
+        
         <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-        <div class="navbar-header">
-        <a class="navbar-brand" href="#">Angular2</a>
-        </div>
-        <ul class="nav navbar-nav">
-        <li class="active"><a href="#"> Home</a></li>
-        <li><a href="#">Article</a></li>
-        <li><a href="#">Tutorial</a></li> 
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-        <!--
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        </ul>
-        </div>
+        <nav class="navbar navbar-inverse" style="position: fixed; top:0; left:0; right:0; z-index: 1030;">
+            
+            <div class="container-fluid col-sm-1" >
+                <div class="navbar-header">
+                    <img src="{{ asset('bundles/ikbalblog/images/angularjs.png') }}" width="60">
+                
+                </div>
+            </div>
+
+            <ul class="nav navbar-nav col-sm-8">
+                 
+
+                <li class=""><a href="/projects/blog_ikbal/web"> Home</a></li>
+                
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class=""><a href="{{ url('newaction')}}">New Article</a></li>
+                {% endif %}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            <!--
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        
+                    <li><a href="{{ path('fos_user_security_logout') }}">
+                    <span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                {% else %}
+                     <li>  <a href="{{ path('fos_user_security_login') }}"></span> Login</a></li>
+                {% endif %}
+          
+            </ul>
+            </div>
         </nav>
     </head>
     <body>

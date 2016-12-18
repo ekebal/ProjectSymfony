@@ -35,4 +35,7 @@ protégées.
   * Informations Complettes 
   
 
-      Le  blog contient deux  type d'utilisateur  un administrateur  (ikbalhamdaoui) qui fait le CRUD et les visiteurs  qui peuvent consulter les articles .
+      Le  blog contient deux  type d'utilisateurs un administrateur  (ikbalhamdaoui) qui fait le CRUD et les visiteurs  qui peuvent consulter les articles .
+
+  * Lien git :
+      * https://github.com/ekebal/ProjectSymfony      

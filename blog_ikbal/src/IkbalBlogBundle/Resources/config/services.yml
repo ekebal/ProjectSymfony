@@ -1,4 +1,0 @@
-services:
-#    ikbal_blog.example:
-#        class: IkbalBlogBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]

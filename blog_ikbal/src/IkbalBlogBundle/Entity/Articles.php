@@ -56,7 +56,12 @@ class Articles
      */
     private $picture;
 
-
+     /**
+     * @var \stdClass
+     *
+     * @ORM\Column(name="url", type="text")
+     */
+    private $url;
     /**
      * Get id
      *
@@ -164,7 +169,31 @@ class Articles
     }
 
     /**
-     * Set picture
+     * Set url
+     *
+     * @param \stdClass $url
+     *
+     * @return Articles
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return \stdClass
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * Set url
      *
      * @param \stdClass $picture
      *
@@ -186,4 +215,6 @@ class Articles
     {
         return $this->picture;
     }
+
+
 }

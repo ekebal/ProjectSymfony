@@ -34,6 +34,11 @@ class CrudController extends Controller
 	        {
 	        	$article = $form->getData();
 	        	$article->setDate(new \DateTime());
+	    
+	    		$user = $this->container->get('security.token_storage')->getToken()->getUser();
+	            $username = $user->getUsername();
+	            $article->setAuthor($username);
+
 	        	$em->persist($article);
 	        	$em->flush();
 	        	return $this->redirectToRoute('index');
@@ -45,42 +50,44 @@ class CrudController extends Controller
 
 	/**
 	*
-	* @Route("/DeleteAction/{id}", name="deleteaction")
+	* @Route("/delete/{id}", name="deleteaction")
 	*/
-     public function deleteaction($id)
-		{
-			$em = $this->getDoctrine()->getManager();
-			$articleTomove = $em->getRepository('IkbalBlogBundle:Articles')->find($id);
-			$em->remove($articleTomove);
-			$em->flush(); 
+    public function deleteAction($id)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$articleTomove = $em->getRepository('IkbalBlogBundle:Articles')->find($id);
+		$em->remove($articleTomove);
+		$em->flush(); 
 		return $this->redirectToRoute('index');
-		}
-		/**
-	*
-	* @Route("/EditAction/{id}", name="EditAction")
-	*/
-	 public function EditAction(Request $request,$id)
-		{
-			$user=$this->getUser();
-			$em = $this->getDoctrine()->getManager();
-			$articleToedit = $em->getRepository('IkbalBlogBundle:Articles')->find($id);
-			$form = $this->createForm(ArticleType::class, $articleToedit, array( 'action' => $this->generateUrl('EditAction', array('id' => $id) )));
-        
-       		 $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            // $form->getData() holds the submitted values
-            
-            $articleToedit = $form->getData();
-       
-            
-            $em->flush();
+	}
 
-				return $this->redirectToRoute('index');
-			}
-			return $this->render('IkbalBlogBundle:blog:editArticle.html.twig', array(
-			'form' => $form->createView()));
-		
+	/**
+	*
+	* @Route("/edit/{id}", name="editaction")
+	*/
+	public function editAction(Request $request,$id)
+	{
+		$user=$this->getUser();
+		$em = $this->getDoctrine()->getManager();
+		$articleToedit = $em->getRepository('IkbalBlogBundle:Articles')->find($id);
+		$form = $this->createForm(ArticleType::class, $articleToedit, array( 'action' => $this->generateUrl('editaction', array('id' => $id) )));
+    
+   		$form->handleRequest($request);
+		if ($form->isSubmitted() && $form->isValid()) {    
+    		$articleToedit = $form->getData();
+    		$user = $this->container->get('security.token_storage')->getToken()->getUser();
+            $username = $user->getUsername();
+            $articleToedit->setAuthor($username);
+    		//$articleToedit->setAuthor('Admin');
+    		$em->flush();
+
+			return $this->redirectToRoute('index');
 		}
+
+		return $this->render('IkbalBlogBundle:blog:editArticle.html.twig', array(
+		'form' => $form->createView()));
+	
+	}
 }
 
 ?>

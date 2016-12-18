@@ -91,11 +91,31 @@ fos_user:
     user_class: IkbalBlogBundle\Entity\User
 
 ivory_ck_editor:
+    default_config:                     my_custom_config    # Utiliser par defaut la configuration my_custom_config
     configs:
-        my_config:
-            toolbar: [ ["Source", "-", "Save"], "/", ["Anchor"], "/", ["Maximize"] ]
-            uiColor:                "#000000"
-            filebrowserUploadRoute: "my_route"
-            extraPlugins:           "wordcount"
-            # ...
-            #             
+        my_custom_config:
+            language:                   %locale%
+            toolbar:                    standard            # Charger la toolbar tollbar_1 (voir plus bas)
+            stylesSet:                  my_styles           # Chargement des styles personnalisables my_styles (voir plus bas)
+            uiColor:                    "#FCFCFC"           # Couleur de fond de l'interface
+            height:                     '600px'  
+                      # Hauteur par défaut
+            # Utiliser les styles css suivants dans le contenu de l'éditeur. Permet de voir le rendu en temps réeem
+            contentsCss:                ['bundles/app/css/style.css']
+    styles:         # Configuration des styles personnalisables
+        my_styles:
+            - { name: "Alerte Success", element: "div",  attributes: { class: "alert alert-success", role: "alert" }}
+            - { name: "Alerte Info", element: "div",  attributes: { class: "alert alert-info", role: "alert" }}
+            - { name: "Alerte Warning", element: "div",  attributes: { class: "alert alert-warning", role: "alert" }}
+            - { name: "Alerte Danger", element: "div",  attributes: { class: "alert alert-danger", role: "alert" }}
+            - { name: "Badge", element: "span",  attributes: { class: "badge" }}
+
+    plugins:
+        video:
+            path:                       '/bundles/app/ckeditor/video/'
+            filename:                   'plugin.js'
+    default_config:    my_custom_config
+    configs:
+        my_custom_config:
+            toolbar:                   [{ name: 'insert', items: ['Image', 'Youtube']}]
+            extraPlugins:               'youtube'

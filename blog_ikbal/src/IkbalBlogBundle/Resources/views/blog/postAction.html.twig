@@ -6,13 +6,13 @@
 
 	<div class="row">
 		<div class="col-sm-3 " style="height: 200px;line-height:200px; text-align:center;">
-			<img class="vcenter" alt="#" src="{{article.getPicture()}}"  alt=""  width="200" />
+			<img class="vcenter" alt="#" src="{{article.getPicture()}}"  alt=""  width="200" onclick="window.open(this.src,'_blank','toolbar=0, location=0, directories=0, status=0, scrollbars=0, resizable=0, copyhistory=0, menuBar=0, width='+this.width+', height='+this.height);"/>
 		</div>
 
 		<div class="col-sm-7" >
 			<div class="row showarticle ">
 				<div class="col-sm-11">
-					<a href="{{ path( 'showArticle', {id : article.getId()}) }}">
+					<a href="{{ path( 'post', {url : article.getUrl()}) }}">
 						<h2 class="article-titre">{{article.getTitle()}}</h2>
 					</a>
 				</div>
@@ -23,14 +23,14 @@
 			</div>
 			<div class="row article-text "> 
 				<div class="col-sm-11">
-					{{ article.getContent() | striptags }}
+					{{ article.getContent() | raw }}
 				</div>
 			</div>
 			<div class="row" >
 				<div class="col-sm-11 text-right">
 					{% if is_granted('ROLE_ADMIN') %}
-					<a href="{{ path( 'deleteaction', {id : article.getId()}) }}" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-trash"></span> Supprimer</a>
-					<a href="{{ path( 'EditAction', {id : article.getId()}) }}" class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-ok"></span> Editer</a>
+					<a href="{{ path( 'deleteaction', {id : article.getId()}) }}" class="btn btn-primary btn-danger"> Supprimer</a>
+					<a href="{{ path( 'editaction', {id : article.getId()}) }}" class="btn btn-primary btn-primary"> Editer</a>
 					{% endif %}
 				</div>
 			</div>

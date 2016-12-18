@@ -1,26 +1,36 @@
-Symfony Standard Edition
+Blog ikbal Symfony 3 
 ========================
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
-
-What's inside?
+Informations
 --------------
 
-The Symfony Standard Edition is configured with the following defaults:
 
-  * An AppBundle you can use to start coding;
+  * Nom et prénom: ikbal hamdaoui
 
-  * Twig as the only configured template engine;
+  * Compte et Accés:
+      *Login : ikbalhamdaoui
+      *passeword :ikbalikbal
 
-  * Doctrine ORM/DBAL;
+  * Commentaire
 
-  * Swiftmailer;
+      * Le blog comprend 2 contrôleurs (Blog & Crud) et 5 routes (Action) :
+        ● indexAction => page d'accueil (/) listant les x derniers billets (page à page),
+        ● postAction => page billet (/post/$id) affichant le contenu d'un bille
+        ● newAction => Ajout
+        ● editAction => Edition
+        ● eeleteAction => Suppression
 
-  * Annotations enabled for everything.
+  Le blog implémente FosUser pour se connecter (la page de login est  habillée) et les routes CRUD sont 
+protégées.
+      implémente une pagination qui affiche 4 articles par page
+
+  * Appréciation sur le cours pour l’année suivante :
+    
+      les cours de cette partie sont importants complets ,documentation clairs , et  
+
+
+
 
 It comes pre-configured with the following bundles:
 

@@ -14,34 +14,29 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <nav class="navbar navbar-inverse" style="position: fixed; top:0; left:0; right:0; z-index: 1030;">
             
-            <div class="container-fluid col-sm-1" >
-                <div class="navbar-header">
-                    <img src="{{ asset('bundles/ikbalblog/images/angularjs.png') }}" width="60">
-                
+            <div style="width: 70%; display: inline-table; float: left;" >
+                <div class="navbar-header" style="float: left;">
+                   <a href="{{ url('index')}}"> <img src="{{ asset('bundles/ikbalblog/images/angularjs.png') }}" width="60"></a>
+                </div>
+                <div style="display: inline-table; float: left;"  >
+                    <ul class="nav navbar-nav">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class=""><a href="{{ url('newaction')}}">New Article</a></li>
+                        {% endif %}
+                    </ul>
                 </div>
             </div>
-
-            <ul class="nav navbar-nav col-sm-8">
-                 
-
-                <li class=""><a href="/projects/blog_ikbal/web"> Home</a></li>
-                
-                {% if is_granted('ROLE_ADMIN') %}
-                    <li class=""><a href="{{ url('newaction')}}">New Article</a></li>
-                {% endif %}
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-            <!--
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        
-                    <li><a href="{{ path('fos_user_security_logout') }}">
-                    <span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-                {% else %}
-                     <li>  <a href="{{ path('fos_user_security_login') }}"></span> Login</a></li>
-                {% endif %}
-          
-            </ul>
+    
+           
+            <div style="width: 30%; display: inline-table; float: right;"  >
+                <ul class="nav navbar-nav" style="float: right; padding-right: 10px;" class="text-right">
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li><a href="{{ path('fos_user_security_logout') }}"> Logout</a></li>
+                    {% else %}
+                         <li>  <a href="{{ path('fos_user_security_login') }}"> Login</a></li>
+                    {% endif %}
+              
+                </ul>
             </div>
         </nav>
     </head>

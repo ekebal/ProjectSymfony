@@ -13,7 +13,7 @@ class ArticleType extends AbstractType
         $builder
         ->setMethod('POST')
          ->add('title')
-         ->add('author')
+         ->add('url')
          ->add('picture')
          ->add('content', CKEditorType::class)
          ->add('save', SubmitType::class);

@@ -9,17 +9,17 @@ Informations
   * Nom et prénom: ikbal hamdaoui
 
   * Compte et Accés:
-      *Login : ikbalhamdaoui
-      *passeword :ikbalikbal
+    * Login : ikbalhamdaoui
+    * password :ikbalikbal
 
   * Commentaire
 
-      * Le blog comprend 2 contrôleurs (Blog & Crud) et 5 routes (Action) :
-        ● indexAction => page d'accueil (/) listant les x derniers billets (page à page),
-        ● postAction => page billet (/post/$id) affichant le contenu d'un bille
-        ● newAction => Ajout
-        ● editAction => Edition
-        ● eeleteAction => Suppression
+        * Le blog comprend 2 contrôleurs (Blog & Crud) et 5 routes (Action) :
+        * indexAction => page d'accueil (/) listant les x derniers billets (page à page),
+        * postAction => page billet (/post/$id) affichant le contenu d'un bille
+        * newAction => Ajout
+        * editAction => Edition
+        * deleteAction => Suppression
 
   Le blog implémente FosUser pour se connecter (la page de login est  habillée) et les routes CRUD sont 
 protégées.

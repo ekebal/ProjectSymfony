@@ -1,0 +1,5 @@
+ikbal_blog_index:
+    path:     /
+    defaults: {_controller: IkbalBlogBundle:Blog:index"}
+
+

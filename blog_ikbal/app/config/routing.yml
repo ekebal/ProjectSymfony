@@ -1,0 +1,8 @@
+ikbal_blog:
+    resource: "@IkbalBlogBundle/Controller/"
+    type:     annotation
+# app/config/routing.yml
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+

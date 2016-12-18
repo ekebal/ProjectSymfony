@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+        {% stylesheets '@IkbalBlogBundle/Resources/public/css/bootstrap.css'
+         '@IkbalBlogBundle/Resources/public/css/blog-ikbal-css.css' %}
+
+        
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+      </head>
+    <body>
+        <nav class="navbar navbar-inverse" style="position: fixed; top:0; left:0; right:0; z-index: 1030;">
+                
+            <div style="width: 70%; display: inline-table; float: left;" >
+                <div class="navbar-header" style="float: left;">
+                   <a href="{{ url('index')}}"> <img src="{{ asset('bundles/ikbalblog/images/angularjs.png') }}" width="60" alt="iconejs"></a>
+                </div>
+                <div style="display: inline-table; float: left;"  >
+                    <ul class="nav navbar-nav">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class=""><a href="{{ url('newaction')}}">New Article</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+
+           
+            <div style="width: 30%; display: inline-table; float: right;"  >
+                <ul class="nav navbar-nav" style="float: right; padding-right: 10px;">
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li><a href="{{ path('fos_user_security_logout') }}"> Logout</a></li>
+                    {% else %}
+                         <li>  <a href="{{ path('fos_user_security_login') }}"> Login</a></li>
+                    {% endif %}
+              
+                </ul>
+            </div>
+        </nav>
+
+        <div class="panel-body">
+            {% block body %}
+            {% endblock %}
+        </div>
+
+        
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

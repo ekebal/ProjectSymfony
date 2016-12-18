@@ -1,0 +1,73 @@
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #555;
+  background-color: #fff;
+ }
+
+ .navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+  color: #fff;
+  background-color: #C3C3C3;
+}
+.logo
+{
+	width: 30%;
+	margin-bottom: 10%
+
+}
+ul li a:hover {
+ background:black repeat-x;
+ color:white;
+ }  
+ .content{
+
+ margin-top: 5%;
+ }
+
+.vcenter {
+    vertical-align: middle;
+}
+
+.article-text{
+	margin-top: 5px;
+	min-height: 80px;
+}
+.article-date{
+	font-size: 0.7em;
+	color: #9d9d9d;
+	font-style: italic;
+	font-weight: bold;
+}
+.panel-info
+{
+	background-color: #fff;
+}
+.panel
+{
+	
+	/*position: relative;
+	display: inline-block;*/
+	text-align: center;
+	background-image: linear-gradient(to bottom, #dacdb1 20%, #c8c8c8 60%);
+	box-shadow: 0 0 65px #cdbe9f inset, 0 0 20px #beae8c inset;
+}
+.panel-info > .panel-heading
+{
+	background-color: #fff;
+	border: none;
+}
+a:link 
+{ 
+ text-decoration:none; 
+} 
+
+a:hover {
+    color: red;
+    
+}
+.showarticle
+{
+	margin-top:10%;
+}
